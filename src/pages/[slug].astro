@@ -1,0 +1,28 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import InfoLayout from "@/layouts/info.astro";
+
+import ImageCarousel from "@/components/ImageCarousel.tsx";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("places");
+  return entries.map((entry) => ({ params: { slug: entry.id } }));
+}
+
+const { slug } = Astro.params;
+const entry = await getEntry("places", slug!);
+
+if (!entry) return Astro.redirect("/404");
+
+const { Content } = await render(entry);
+
+const extraMDXComponents = {
+  ImageCarousel,
+};
+---
+
+<InfoLayout title={entry.data.title}>
+  <div class="max-w-3xl mx-auto px-4 sm:px-8 py-16 prose prose-invert">
+    <Content components={extraMDXComponents} />
+  </div>
+</InfoLayout>

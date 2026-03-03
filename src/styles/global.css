@@ -3,7 +3,16 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/noto-sans";
 
+@plugin "@tailwindcss/typography";
+
 @custom-variant dark (&:is(.dark *));
+
+[data-lightbox="true"] {
+	width: auto !important;
+	max-width: none !important;
+	max-width: 80vw !important;
+	max-height: 80vh !important;
+}
 
 :root {
 	--background: oklch(1 0 0);
