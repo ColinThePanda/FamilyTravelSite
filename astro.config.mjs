@@ -1,22 +1,31 @@
 // @ts-check
-
-import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
-
+import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
-
 import mdx from "@astrojs/mdx";
-
 import remarkFlexibleMarkers from "remark-flexible-markers";
 
-// https://astro.build/config
+const isGitHub = process.env.GITHUB_ACTIONS === "true";
+
 export default defineConfig({
-	vite: {
-		plugins: [tailwindcss()],
-	},
 	markdown: {
 		remarkPlugins: [remarkFlexibleMarkers],
 	},
-
-	integrations: [react(), mdx()],
+	vite: {
+		plugins: [tailwindcss()],
+		resolve: {
+			alias: {
+				"@": "/src",
+			},
+		},
+	},
+	integrations: [
+		react(),
+		mdx({
+			remarkPlugins: [remarkFlexibleMarkers],
+		}),
+	],
+	output: "static",
+	site: "https://colinthepanda.github.io",
+	base: isGitHub ? "/FamilyTravelSite/" : "/",
 });
