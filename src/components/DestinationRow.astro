@@ -1,0 +1,51 @@
+---
+import { Badge } from "@/components/ui/badge";
+import { base } from "@/lib/base";
+
+interface Props {
+  slug: string;
+  name: string;
+  country: string;
+  region: string;
+  year: number;
+  img: string;
+  places: number;
+  index: number;
+}
+
+const { slug, name, country, region, year, img, places, index } = Astro.props;
+---
+
+<a
+  href={`${base}/${slug}`}
+  class="group relative grid border-b border-border overflow-hidden transition-colors duration-200 hover:bg-accent"
+  style="grid-template-columns: 5rem 1fr 14rem;"
+>
+  <div class="flex items-center justify-center border-r border-border py-10 transition-colors duration-200 group-hover:bg-primary">
+    <span class="text-5xl font-black tabular-nums text-muted-foreground transition-colors duration-200 group-hover:text-primary-foreground">
+      {String(index).padStart(2, "0")}
+    </span>
+  </div>
+
+  <div class="flex flex-col justify-center px-10 py-10 gap-3">
+    <div class="flex flex-wrap items-baseline gap-3 transition-transform duration-300 group-hover:translate-x-1.5">
+      <h2 class="text-4xl font-bold text-foreground tracking-tight leading-tight">{name}</h2>
+      <span class="text-2xl text-muted-foreground font-light">{country}</span>
+    </div>
+    <div class="flex flex-wrap items-center gap-2 transition-transform duration-350 group-hover:translate-x-1.5">
+      <Badge variant="secondary" className="text-sm px-3 py-1">{region}</Badge>
+      <Badge variant="outline" className="text-sm px-3 py-1">{year}</Badge>
+      <span class="text-sm text-muted-foreground">{places} places</span>
+      <span class="text-sm text-foreground opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">→</span>
+    </div>
+    <div class="h-px bg-primary w-24 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100" />
+  </div>
+
+  <div class="relative overflow-hidden border-l border-border">
+    <img
+      src={img}
+      alt={name}
+      class="absolute inset-0 w-full h-full object-cover scale-[1.08] opacity-0 transition-all duration-700 group-hover:opacity-70 group-hover:scale-100"
+    />
+  </div>
+</a>
