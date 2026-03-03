@@ -3,6 +3,7 @@ title: Kyoto
 ---
 
 import ImageCarousel from "@/components/ImageCarousel";
+import TravelMap from "@/components/TravelMap";
 
 # Kyoto
 
@@ -20,7 +21,7 @@ cool seperator brah
 
 **whoa this shit bold**
 
-*whoa italic*
+_whoa italic_
 
 ~this idea sucks cross it out~
 
@@ -128,5 +129,19 @@ Peek with lightbox:
 		"https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=900&q=80",
 		"https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=900&q=80",
 		"https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=900&q=80",
+	]}
+/>
+
+Here is a map of Kyoto with markers for Nishiki Market and Fushimi Inari:
+
+<TravelMap
+	client:only="react"
+	longitude={135.7681}
+	latitude={35.0116}
+	zoom={14}
+	height="500px"
+	markers={[
+		{ label: "Nishiki Market", longitude: 135.7652, latitude: 35.0053 },
+		{ label: "Fushimi Inari", longitude: 135.7727, latitude: 34.9671 },
 	]}
 />

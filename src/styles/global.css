@@ -14,6 +14,15 @@
 	max-height: 80vh !important;
 }
 
+.leaflet-bar a {
+	background-color: hsl(var(--background)) !important;
+	color: hsl(var(--foreground)) !important;
+	border-color: hsl(var(--border)) !important;
+}
+.leaflet-bar a:hover {
+	background-color: hsl(var(--accent)) !important;
+}
+
 :root {
 	--background: oklch(1 0 0);
 	--foreground: oklch(0.141 0.005 285.823);
