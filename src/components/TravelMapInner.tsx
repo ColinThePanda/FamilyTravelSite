@@ -37,7 +37,7 @@ export default function TravelMapInner({
 				zoomControl={false}
 				attributionControl={false}
 			>
-				<TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png" />
+				<TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
 				<ZoomControl position="topright" />
 				{markers.map((m, i) => (
 					<Marker key={i} position={[m.latitude, m.longitude]}>
